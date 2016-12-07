@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Margo's Website</title>
+  <meta charset="UTF-8">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <!-- To be able to use the .draggable function -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <!-- External JS -->
+   <script src="animation_game.js"></script>
+
+  <style>
+
+    #pad {
+      background-color: #caccce;
+      position:relative;
+      height: 500px;
+    }
+
+    #cat {
+      position:absolute;
+      top: 150px;
+      border: solid black;
+    }
+
+    #mouse {
+      position:absolute;
+      top: 150px;
+      left: 1110px;
+      border: solid black;
+    }
+
+    .block {
+      width:200px;
+      height: 100px;
+      border:1px solid;
+    }
+
+    #green {
+      background-color:#bca;
+      border: solid green;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      }
+
+    #red {
+      background-color:#f98d66;
+      border: solid red;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    #blue {
+      background-color:#4eb2e0;
+      border: solid blue;
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+    }
+
+    #yellow {
+      background-color:#f4ed86;
+      border: solid orange;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
+    </style>
+</head>
+
+<body>
+
+  <!-- My navbar's code -->
+  <ul>
+    <li><a href="website.html">Home</a></li>
+    <li><a href="buttons.html">All kinds of buttons</a></li>
+    <li><a href="escape_game_1.html">Escape Game 1</a></li>
+  </ul>
+
+  <button id = "out"> Animate Out </button>
+  <button id = "in"> Animate In</button>
+  <button id = "start">Start</button>
+
+</br>
+  <button class = "directions" id="left"> <-- </button>
+  <button class = "directions" id="right"> --> </button>
+
+</br>
+  <p>Colliding? <span id="result">false</span></p>
+
+</br>
+
+  <h1 id= "score">score: 0</h1>
+
+  <div id="pad">
+    <div id = "cat"><img src="cat.png" width="100px" alt="cat"></div>
+    <div class = "block" id="green">Green Block</div>
+    <div class = "block" id="blue">Blue Block</div>
+
+    <div class = "block" id="red">Red Block</div>
+    <div class = "block" id="yellow">Yellow Block</div>
+    <div id = "mouse"><img src="mouse.png" width="50px" alt="mouse"></div>
+  </div>
+</body>
+</html>
