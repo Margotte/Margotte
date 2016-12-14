@@ -11,7 +11,7 @@
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-  <!-- To be able to use the .draggable function -->
+  <!-- To be able to use the .draggable function - not used in this version of the game-->
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
   <!-- External JS -->
@@ -78,7 +78,7 @@
     </style>
 </head>
 
-<body>
+<body onkeydown="keyPress(event)">
 
   <!-- My navbar's code -->
   <ul>
@@ -87,20 +87,18 @@
     <li><a href="escape_game_1.html">Escape Game 1</a></li>
   </ul>
 
-  <button id = "out"> Animate Out </button>
-  <button id = "in"> Animate In</button>
   <button id = "start">Start</button>
 
-</br>
-  <button class = "directions" id="left"> <-- </button>
-  <button class = "directions" id="right"> --> </button>
+  </br>
+  <!--   <button class = "directions" id="left"> <-- </button>
+    <button class = "directions" id="right"> </button> -->
 
-</br>
-  <p>Colliding? <span id="result">false</span></p>
+  <!-- </br>
+    <p>Touched mouse? <span id="result">false</span></p>
+  </br>
+    <p>Touched green block? <span id="result-green">false</span></p> -->
 
-</br>
-
-  <h1 id= "score">score: 0</h1>
+  <h2 id= "score">SCORE: 20</h2>
 
   <div id="pad">
     <div id = "cat"><img src="cat.png" width="100px" alt="cat"></div>

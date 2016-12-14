@@ -1,97 +1,84 @@
 $(document).ready(function() {
-  // $("#start").click(setInterval(animateOutIn,4000))
-  // window.setInterval(animateOutIn, 5000);
 
 
-  $("#start").click(animateOutIn)
-  $("#out").click(animateOut)
-  $("#in").click(animateIn)
+  // START GAME AND ANIMATE BLOCKS
+
+  $("#start").click(animateBlocks)
+
+  function resizeRandom(object, min, max) {
+    object.animate({
+      left: Math.floor((Math.random() * (max-min)) + min) + 400+"px",
+      top: Math.floor((Math.random() * (max-min)) + min)
+    }, 1050);
+  }
+
+  function animateBlocks() {
+    resizeRandom($("#yellow"), 10, 400);
+    resizeRandom($("#red"), 10, 400);
+    resizeRandom($("#blue"), 10, 400);
+    resizeRandom($("#green"), 10, 400);
+    setTimeout(animateBlocks, 1050);
+  }
+
+  // OTHER IDEAS TO ANIMATE BLOCKS
+
+  // function animateBlocks (){
+  //   $(".block").animate({
+  //     width: "400px",
+  //     opacity: 0.5,
+  //     marginLeft: "0.8in",
+  //     fontSize: "3em",
+  //     borderWidth: "10px"
+  //   }, 1500 );
+
+  //  $(".block").animate({
+  //     width: "200",
+  //     opacity: 1.0,
+  //     marginLeft: "0in",
+  //     fontSize: "100%",
+  //     borderWidth: "3px"
+  //   }, 1500 );
+
+  //  setTimeout(animateBlocks, 5000);
+  // };
 
 
+  //SCORE
 
-  window.setInterval(function() {
-    $('#result').text(collision($('#cat'), $('#mouse')));
-    // if (collision($('#cat'), $('#mouse'))) {
-    //   alert("You won!");
-    // }
+    var i = 20
+
+    window.setInterval(function() {
+
+      var collisionGreen = collision($('#cat'), $('#green'));
+      var collisionRed = collision($('#cat'), $('#red'));
+      var collisionBlue = collision($('#cat'), $('#blue'));
+      var collisionYellow = collision($('#cat'), $('#yellow'));
+
+      // $('#result-green').text(collisionGreen);
+
+      if (collisionGreen == true || collisionRed == true || collisionBlue == true || collisionYellow == true) {
+        i -= 1;
+        $("#score").html("score: " + i);
+      }
   }, 200);
 
 
-  $("#cat").draggable();
 
+  // WIN? (DETECT COLLISION OF CAT WITH MOUSE)
 
-  var i = 0
+  window.setInterval(function() {
+    var collisionStatus = collision($('#cat'), $('#mouse'));
 
-  $(".block").mouseover(function(){
-    i += 1;
-    $("#score").html("score: -" + i);
-  })
-
-  var x = 0
-
-
-  $("#right").click(function () {
-
-    $("#cat").animate ({
-      left: x += 30,
-    }, 50);
-  });
-
-  $("#left").click(function () {
-    $("#cat").animate ({
-      left: x -= 30,
-    }, 50);
-
-    // var posCat = $("#cat").position();
-    // var posMouse = $("#mouse").position();
-    // $("#position").html("Position of the cat: " + posCat.left + " and position of mouse: " + posMouse.left);
-   });
+    // $('#result').text(collisionStatus);
+    if (collisionStatus == true) {
+        alert("You won! Your score is " + i);
+    };
+  }, 200);
 
 
 
 
-
-  function animateOut () {
-    $(".block").animate({
-      width: "400px",
-      opacity: 0.5,
-      marginLeft: "0.8in",
-      fontSize: "3em",
-      borderWidth: "10px"
-    }, 1500 );
-  };
-
-  function animateIn (){
-    $(".block").animate({
-      width: "200",
-      opacity: 1.0,
-      marginLeft: "0in",
-      fontSize: "100%",
-      borderWidth: "3px"
-    }, 1500 );
-  };
-
-
-  function animateOutIn (){
-    $(".block").animate({
-      width: "400px",
-      opacity: 0.5,
-      marginLeft: "0.8in",
-      fontSize: "3em",
-      borderWidth: "10px"
-    }, 1500 );
-
-   $(".block").animate({
-      width: "200",
-      opacity: 1.0,
-      marginLeft: "0in",
-      fontSize: "100%",
-      borderWidth: "3px"
-    }, 1500 );
-
-   setTimeout(animateOutIn, 5000);
-  };
-
+  // DETECT COLLISION
 
   function collision($div1, $div2) {
       var x1 = $div1.offset().left;
@@ -109,6 +96,68 @@ $(document).ready(function() {
 
       if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
       return true;
-    }
+  }
 
 });
+
+// MAKE CAT MOVE
+
+function keyPress(e){
+    var keynum;
+
+    if(window.event) { // IE
+      keynum = e.keyCode;
+    } else if(e.which){ // Netscape/Firefox/Opera
+      keynum = e.which;
+    }
+
+    if (keynum == 39) {
+      $("#cat").animate({
+        left: "+=10"
+      }, 10);
+    }
+
+    if (keynum == 37) {
+      $("#cat").animate({
+        left: "-=10"
+      }, 10);
+    }
+
+    if (keynum == 38) {
+      $("#cat").animate({
+        top: "-=10"
+      }, 10);
+    }
+
+    if (keynum == 40) {
+      $("#cat").animate({
+        top: "+=10"
+      }, 10);
+    }
+  }
+
+  // OTHER IDEAS TO MAKE CAT MOVE
+
+  //   var x = 0
+
+  // $("#right").click(function () {
+
+  //   $("#cat").animate ({
+  //     left: x += 30
+  //   }, 50);
+  // });
+
+  // $("#left").click(function () {
+  //   $("#cat").animate ({
+  //     left: x -= 30
+  //   }, 50);
+
+  //   // var posCat = $("#cat").position();
+  //   // var posMouse = $("#mouse").position();
+  //   // $("#position").html("Position of the cat: " + posCat.left + " and position of mouse: " + posMouse.left);
+  //  });
+
+
+
+
+  // $("#cat").draggable();
