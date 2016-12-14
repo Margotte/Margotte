@@ -66,12 +66,20 @@ $(document).ready(function() {
 
   // WIN? (DETECT COLLISION OF CAT WITH MOUSE)
 
+  var won = false;
+
   window.setInterval(function() {
     var collisionStatus = collision($('#cat'), $('#mouse'));
 
     // $('#result').text(collisionStatus);
     if (collisionStatus == true) {
-        alert("You won! Your score is " + i);
+        // alert("You won! Your score is " + i);
+
+      if (!won) alert ("You won! Your score is " + i);
+      won = true;
+      setTimeout(function() {
+        location.reload();
+      }, 200);
     };
   }, 200);
 
