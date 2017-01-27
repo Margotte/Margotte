@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-
   // START GAME AND ANIMATE BLOCKS
 
   $("#start").click(animateBlocks)

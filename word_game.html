@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Margo's Website</title>
+  <meta charset="UTF-8">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="stylesheets/word_game.css">
+
+ <script type="text/javascript" src="javascript/word_game.js"></script>
+</head>
+
+<body>
+
+  <!-- My navbar's code -->
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="buttons.html">All kinds of buttons</a></li>
+    <li><a href="escape_game.html">Escape Game</a></li>
+    <li><a href="word_game.html">La folle histoire</a></li>
+  </ul>
+
+<br>
+<form>
+  <fieldset>
+    <label for="txtGars">Nom d'un gars</label>
+    <input type="text" id="txtGars">
+
+    <label for="txtFille">Nom d'un fille</label>
+    <input type="text" id="txtFille">
+
+    <label for="txtGeo">Nom d'un endroit</label>
+    <input type="text" id="txtGeo">
+
+    <label for="txtVerbe">Un verbe à l'infinitif</label>
+    <input type="text" id="txtVerbe">
+
+    <label for="txtObjet">Nom d'un objet et son article indéfini (ex: un tableau)</label>
+    <input type="text" id="txtObjet">
+
+    <label for="txtLiq">Nom d'un liquide</label>
+    <input type="text" id="txtLiq">
+
+    <label for="txtCorps">Une partie du corps et son article défini (ex: le bras)</label>
+    <input type="text" id="txtCorps">
+
+    <label for="txtGerondif">Un gérondif (ex: pensant)</label>
+    <input type="text" id="txtGerondif">
+
+    <label for="txtReflechi">Un verbe réfléchi (ex: s'habiller)</label>
+    <input type="text" id="txtReflechi">
+
+
+    <button type = "button" onclick="folleHistoire()">submit</button>
+  </fieldset>
+</form>
+
+<br>
+<br>
+<div id="output"></div>
+
+
+</body>
+</html>
