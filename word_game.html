@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="stylesheets/style.css">
   <link rel="stylesheet" href="stylesheets/word_game.css">
 
- <script type="text/javascript" src="javascript/word_game.js"></script>
+  <script type="text/javascript" src="javascript/word_game.js"></script>
 </head>
 
 <body>
@@ -25,45 +25,46 @@
 
   </ul>
 
-<br>
-<form>
-  <fieldset>
-    <label for="txtGars">Nom d'un gars</label>
-    <input type="text" id="txtGars">
+  <div class="container">
+    <h1>The Crazy Story</h1>
+    <form>
+      <fieldset>
+        <label for="txtGars">Nom d'un gars</label>
+        <input type="text" id="txtGars">
 
-    <label for="txtFille">Nom d'un fille</label>
-    <input type="text" id="txtFille">
+        <label for="txtFille">Nom d'un fille</label>
+        <input type="text" id="txtFille">
 
-    <label for="txtGeo">Nom d'un endroit</label>
-    <input type="text" id="txtGeo">
+        <label for="txtGeo">Nom d'un endroit</label>
+        <input type="text" id="txtGeo">
 
-    <label for="txtVerbe">Un verbe à l'infinitif</label>
-    <input type="text" id="txtVerbe">
+        <label for="txtVerbe">Un verbe à l'infinitif</label>
+        <input type="text" id="txtVerbe">
 
-    <label for="txtObjet">Nom d'un objet et son article indéfini (ex: un tableau)</label>
-    <input type="text" id="txtObjet">
+        <label for="txtObjet">Nom d'un objet et son article indéfini (ex: un tableau)</label>
+        <input type="text" id="txtObjet">
 
-    <label for="txtLiq">Nom d'un liquide</label>
-    <input type="text" id="txtLiq">
+        <label for="txtLiq">Nom d'un liquide</label>
+        <input type="text" id="txtLiq">
 
-    <label for="txtCorps">Une partie du corps et son article défini (ex: le bras)</label>
-    <input type="text" id="txtCorps">
+        <label for="txtCorps">Une partie du corps et son article défini (ex: le bras)</label>
+        <input type="text" id="txtCorps">
 
-    <label for="txtGerondif">Un gérondif (ex: pensant)</label>
-    <input type="text" id="txtGerondif">
+        <label for="txtGerondif">Un gérondif (ex: pensant)</label>
+        <input type="text" id="txtGerondif">
 
-    <label for="txtReflechi">Un verbe réfléchi (ex: s'habiller)</label>
-    <input type="text" id="txtReflechi">
-
-
-    <button type = "button" onclick="folleHistoire()">Créer mon histoire!</button>
-  </fieldset>
-</form>
-
-<br>
-<br>
-<div id="output"></div>
+        <label for="txtReflechi">Un verbe réfléchi (ex: s'habiller)</label>
+        <input type="text" id="txtReflechi">
 
 
+        <button type = "button" onclick="folleHistoire()">Créer mon histoire!</button>
+      </fieldset>
+    </form>
+
+    <br>
+    <br>
+    <div id="output"></div>
+
+  </div>
 </body>
 </html>

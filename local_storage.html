@@ -7,7 +7,6 @@
 
   <!-- External CSS -->
   <link rel="stylesheet" href="stylesheets/style.css">
-
   <link rel="stylesheet" href="stylesheets/local_storage.css">
 
   <!-- JS way -->
@@ -33,27 +32,28 @@
 
   </ul>
 
-  <h1>Mastering Web Storage</h1>
+  <div class="container">
+    <h1>Mastering Web Storage</h1>
 
-  <!-- Create a form -->
+    <!-- Create a form -->
 
-  <form>
-    <fieldset>
-      <label for="txtName">Name</label>
-      <input type="text" id="txtName">
+    <form>
+      <fieldset>
+        <label for="txtName">Name</label>
+        <input type="text" id="txtName">
 
-      <label for="txtAge">Age</label>
-      <input type="text" id="txtAge">
+        <label for="txtAge">Age</label>
+        <input type="text" id="txtAge">
 
-      <button type = "button" onclick="storeLocally()">Store!</button>
-    </fieldset>
-  </form>
+        <button type = "button" onclick="storeLocally()">Store!</button>
+      </fieldset>
+    </form>
 
-  <!-- Create a div where LocalStorage data will be displayed -->
+    <!-- Create a div where LocalStorage data will be displayed -->
 
-  <div id="output"></div>
-  <div id="delete-all"></div>
-
+    <div id="output"></div>
+    <div id="delete-all"></div>
+  </div>
 </body>
 </html>
 

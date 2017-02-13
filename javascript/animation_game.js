@@ -13,7 +13,6 @@ $(document).ready(function() {
     var name = prompt("What's your name, kitty?");
     animateBlocks();
     updateScore(name);
-
   }
 
   function resizeRandom(object, min, max) {
@@ -158,8 +157,6 @@ $(document).ready(function() {
   }
 
 });
-
-
 
 
 // MAKE CAT MOVE
