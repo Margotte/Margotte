@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Margo's Website</title>
+  <meta charset="UTF-8">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="stylesheets/style.css">
+
+  <link rel="stylesheet" href="stylesheets/local_storage.css">
+
+  <!-- JS way -->
+  <script type="text/javascript" src="javascript/local_storage_js_way.js"></script>
+
+  <!-- jQuery way -->
+<!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <script type="text/javascript" src="javascript/local_storage_jquery_way.js"></script> -->
+
+</head>
+
+<body>
+
+  <!-- My navbar's code -->
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="buttons.html">All Kinds of Buttons</a></li>
+    <li><a href="escape_game.html">The Escape Game</a></li>
+    <li><a href="word_game.html">The Crazy Story</a></li>
+    <li><a href="read_file.html">Reading Text Files</a></li>
+    <li><a href="local_storage.html">Mastering Web Storage</a></li>
+
+  </ul>
+
+  <h1>Mastering Web Storage</h1>
+
+  <!-- Create a form -->
+
+  <form>
+    <fieldset>
+      <label for="txtName">Name</label>
+      <input type="text" id="txtName">
+
+      <label for="txtAge">Age</label>
+      <input type="text" id="txtAge">
+
+      <button type = "button" onclick="storeLocally()">Store!</button>
+    </fieldset>
+  </form>
+
+  <!-- Create a div where LocalStorage data will be displayed -->
+
+  <div id="output"></div>
+  <div id="delete-all"></div>
+
+</body>
+</html>
+

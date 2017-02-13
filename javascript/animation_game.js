@@ -2,7 +2,19 @@ $(document).ready(function() {
 
   // START GAME AND ANIMATE BLOCKS
 
-  $("#start").click(animateBlocks)
+  displayScores();
+
+  $("#start").click(playGame)
+
+  // DISPLAYING SCORES
+
+  function playGame() {
+
+    var name = prompt("What's your name, kitty?");
+    animateBlocks();
+    updateScore(name);
+
+  }
 
   function resizeRandom(object, min, max) {
     object.animate({
@@ -42,9 +54,11 @@ $(document).ready(function() {
   // };
 
 
-  //SCORE
+  // UPDATE SCORE
 
-    var i = 20
+  function updateScore(name){
+
+    var score = 20;
 
     window.setInterval(function() {
 
@@ -56,115 +70,157 @@ $(document).ready(function() {
       // $('#result-green').text(collisionGreen);
 
       if (collisionGreen == true || collisionRed == true || collisionBlue == true || collisionYellow == true) {
-        i -= 1;
-        $("#score").html("score: " + i);
+        score -= 1;
+        $("#score").html("score: " + score);
       }
-  }, 200);
+    }, 200); // end "window.setInterval update score"
+
+      var won = false;
+      window.setInterval(function() {
+        var collisionStatus = collision($('#cat'), $('#mouse'));
+
+      // $('#result').text(collisionStatus);
+      if (collisionStatus == true) {
+          // alert("You won! Your score is " + i);
+
+          if (!won) alert ("You won! Your score is " + score + ", " + name);
+          won = true;
+          localStorage.setItem(name, score);
+          // var result = localStorage.getItem(name);
+          // $("#chart").append("<p>" + name + ": " + result + "</p>");
+          // console.log(localStorage.length)
+
+          setTimeout(function() {
+            location.reload();
+          }, 200);
+
+
+        }; // end "if statement"
+      }, 200) // end "window.setInterval determine collision mouse cat"
+}
 
 
 
   // WIN? (DETECT COLLISION OF CAT WITH MOUSE)
 
-  var won = false;
+  function endGame(x){
 
-  window.setInterval(function() {
-    var collisionStatus = collision($('#cat'), $('#mouse'));
+    var won = false;
 
-    // $('#result').text(collisionStatus);
-    if (collisionStatus == true) {
-        // alert("You won! Your score is " + i);
+    window.setInterval(function() {
+      var collisionStatus = collision($('#cat'), $('#mouse'));
 
-      if (!won) alert ("You won! Your score is " + i);
-      won = true;
-      setTimeout(function() {
-        location.reload();
-      }, 200);
-    };
-  }, 200);
+      // $('#result').text(collisionStatus);
+      if (collisionStatus == true) {
+          // alert("You won! Your score is " + i);
 
+        if (!won) alert ("You won! Your score is " + x);
+        won = true;
+        setTimeout(function() {
+          location.reload();
+        }, 200);
+      };
+    }, 200);
+  }
 
 
 
   // DETECT COLLISION
 
   function collision($div1, $div2) {
-      var x1 = $div1.offset().left;
-      var y1 = $div1.offset().top;
-      var h1 = $div1.outerHeight(true);
-      var w1 = $div1.outerWidth(true);
-      var b1 = y1 + h1;
-      var r1 = x1 + w1;
-      var x2 = $div2.offset().left;
-      var y2 = $div2.offset().top;
-      var h2 = $div2.outerHeight(true);
-      var w2 = $div2.outerWidth(true);
-      var b2 = y2 + h2;
-      var r2 = x2 + w2;
+    var x1 = $div1.offset().left;
+    var y1 = $div1.offset().top;
+    var h1 = $div1.outerHeight(true);
+    var w1 = $div1.outerWidth(true);
+    var b1 = y1 + h1;
+    var r1 = x1 + w1;
+    var x2 = $div2.offset().left;
+    var y2 = $div2.offset().top;
+    var h2 = $div2.outerHeight(true);
+    var w2 = $div2.outerWidth(true);
+    var b2 = y2 + h2;
+    var r2 = x2 + w2;
 
-      if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
-      return true;
+    if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
+    return true;
+  }
+
+
+  // DISPLAYING PREVIOUS SCORES
+
+  function displayScores() {
+
+    for(var i = 0; i < localStorage.length; i++) {
+      var name = localStorage.key(i);
+      var result = localStorage.getItem(name);
+      $("#chart").append("<p>" + name + ": " + result + "</p>");
+    }
   }
 
 });
 
+
+
+
 // MAKE CAT MOVE
+// FIX: bring function back in the playGame function (now linked to onkeydown event)
 
 function keyPress(e){
-    var keynum;
+  var keynum;
 
-    if(window.event) { // IE
-      keynum = e.keyCode;
-    } else if(e.which){ // Netscape/Firefox/Opera
-      keynum = e.which;
-    }
-
-    if (keynum == 39) {
-      $("#cat").animate({
-        left: "+=10"
-      }, 10);
-    }
-
-    if (keynum == 37) {
-      $("#cat").animate({
-        left: "-=10"
-      }, 10);
-    }
-
-    if (keynum == 38) {
-      $("#cat").animate({
-        top: "-=10"
-      }, 10);
-    }
-
-    if (keynum == 40) {
-      $("#cat").animate({
-        top: "+=10"
-      }, 10);
-    }
+  if(window.event) { // IE
+    keynum = e.keyCode;
+  } else if(e.which){ // Netscape/Firefox/Opera
+    keynum = e.which;
   }
 
-  // OTHER IDEAS TO MAKE CAT MOVE
+  if (keynum == 39) {
+    $("#cat").animate({
+      left: "+=10"
+    }, 10);
+  }
 
-  //   var x = 0
+  if (keynum == 37) {
+    $("#cat").animate({
+      left: "-=10"
+    }, 10);
+  }
 
-  // $("#right").click(function () {
+  if (keynum == 38) {
+    $("#cat").animate({
+      top: "-=10"
+    }, 10);
+  }
 
-  //   $("#cat").animate ({
-  //     left: x += 30
-  //   }, 50);
-  // });
+  if (keynum == 40) {
+    $("#cat").animate({
+      top: "+=10"
+    }, 10);
+  }
+}
 
-  // $("#left").click(function () {
-  //   $("#cat").animate ({
-  //     left: x -= 30
-  //   }, 50);
+// OTHER IDEAS TO MAKE CAT MOVE
 
-  //   // var posCat = $("#cat").position();
-  //   // var posMouse = $("#mouse").position();
-  //   // $("#position").html("Position of the cat: " + posCat.left + " and position of mouse: " + posMouse.left);
-  //  });
+//   var x = 0
+
+// $("#right").click(function () {
+
+//   $("#cat").animate ({
+//     left: x += 30
+//   }, 50);
+// });
+
+// $("#left").click(function () {
+//   $("#cat").animate ({
+//     left: x -= 30
+//   }, 50);
+
+//   // var posCat = $("#cat").position();
+//   // var posMouse = $("#mouse").position();
+//   // $("#position").html("Position of the cat: " + posCat.left + " and position of mouse: " + posMouse.left);
+//  });
 
 
+// $("#cat").draggable();
 
 
-  // $("#cat").draggable();

@@ -30,3 +30,9 @@ li a:hover:not(.active) {
 .active {
     background-color: #4CAF50;
 }
+
+.container{
+  width: 80%;
+  margin: auto;
+  margin-top: 2em;
+}

@@ -1,0 +1,4 @@
+Salut, c'est vraiment chouette de coder.
+Sur ce site tu pourras découvrir mes tests en javascript.
+
+Reviens me voir bientôt!

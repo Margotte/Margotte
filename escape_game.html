@@ -7,6 +7,7 @@
 
   <!-- External CSS -->
   <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="stylesheets/escape_game.css">
 
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -15,67 +16,8 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
   <!-- External JS -->
-   <script src="javascript/animation_game.js"></script>
+  <script src="javascript/animation_game.js"></script>
 
-  <style>
-
-    #pad {
-      background-color: #caccce;
-      position:relative;
-      height: 500px;
-    }
-
-    #cat {
-      position:absolute;
-      top: 150px;
-      border: solid black;
-    }
-
-    #mouse {
-      position:absolute;
-      top: 150px;
-      left: 1110px;
-      border: solid black;
-    }
-
-    .block {
-      width:200px;
-      height: 100px;
-      border:1px solid;
-    }
-
-    #green {
-      background-color:#bca;
-      border: solid green;
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      }
-
-    #red {
-      background-color:#f98d66;
-      border: solid red;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-    }
-
-    #blue {
-      background-color:#4eb2e0;
-      border: solid blue;
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-    }
-
-    #yellow {
-      background-color:#f4ed86;
-      border: solid orange;
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-    }
-    </style>
 </head>
 
 <body onkeydown="keyPress(event)">
@@ -83,25 +25,31 @@
   <!-- My navbar's code -->
   <ul>
     <li><a href="index.html">Home</a></li>
-    <li><a href="buttons.html">All kinds of buttons</a></li>
-    <li><a href="escape_game.html">Escape Game</a></li>
-    <li><a href="word_game.html">La folle histoire</a></li>
+    <li><a href="buttons.html">All Kinds of Buttons</a></li>
+    <li><a href="escape_game.html">The Escape Game</a></li>
+    <li><a href="word_game.html">The Crazy Story</a></li>
+    <li><a href="read_file.html">Reading Text Files</a></li>
+    <li><a href="local_storage.html">Mastering Web Storage</a></li>
+
   </ul>
 
-  <button id = "start">Start</button>
+  <div class="container">
+    <button id = "start">START</button>
+    <button onclick="askName()">ASK NAME</button>
+    <h2 id= "score">YOUR SCORE: 20</h2>
 
-  </br>
+    <div id="pad">
+      <div id = "cat"><img src="images/cat.png" width="100px" alt="cat"></div>
+      <div class = "block" id="green">Green Block</div>
+      <div class = "block" id="blue">Blue Block</div>
 
-  <h2 id= "score">SCORE: 20</h2>
+      <div class = "block" id="red">Red Block</div>
+      <div class = "block" id="yellow">Yellow Block</div>
+      <div id = "mouse"><img src="images/mouse.png" width="50px" alt="mouse"></div>
+    </div>
 
-  <div id="pad">
-    <div id = "cat"><img src="images/cat.png" width="100px" alt="cat"></div>
-    <div class = "block" id="green">Green Block</div>
-    <div class = "block" id="blue">Blue Block</div>
-
-    <div class = "block" id="red">Red Block</div>
-    <div class = "block" id="yellow">Yellow Block</div>
-    <div id = "mouse"><img src="images/mouse.png" width="50px" alt="mouse"></div>
+    <h2>PREVIOUS SCORES</h2>
+    <div id="chart"></div>
   </div>
 </body>
 </html>
